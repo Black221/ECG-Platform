@@ -5,7 +5,7 @@ import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class StaffService {
-    private isLoaded!: boolean;
+    isLoaded!: boolean;
 
     constructor(
         private storageService: StorageService,
@@ -17,6 +17,28 @@ export class StaffService {
         return new Promise(
             (resolve, reject) => {
                 this.http.get(environment.AUTH_API+'staff/specific/'+id).subscribe(
+                    (res) => {
+                        this.isLoaded = true;
+                        resolve(res);
+                    },
+                    (error) => {
+                        this.isLoaded = false;
+                        reject(error);
+                    },
+                    () => {
+                        this.isLoaded = false;
+                        return "complete";
+                    }
+                )
+            }
+        )
+    }
+
+    updateStaff(staff : any) {
+        const id = this.storageService.getUser().userId;
+        return new Promise(
+            (resolve, reject) => {
+                this.http.patch(environment.AUTH_API+'staff/update/'+id, staff).subscribe(
                     (res) => {
                         this.isLoaded = true;
                         resolve(res);

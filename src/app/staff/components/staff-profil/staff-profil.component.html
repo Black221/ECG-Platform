@@ -1,23 +1,168 @@
-<div class="container mx-auto align-items-center m-4 d-flex justify-content-between">
-    <h2>Profil</h2>
-    <button (click)="modify()" class="btn fs-2 text-warning"><i class="fa-solid fa-edit"></i></button>
+<div class="container mt-4">
+    <h2 class="text-center" *ngIf="!modify">Mon profil</h2>
+    <h2 class="text-center" *ngIf="modify && !password">Modifier profil</h2>
+    <h2 class="text-center" *ngIf="modify && password">Changer de mot de passe</h2>
 </div>
 <div class="container-fluid mx-auto col-9 d-flex align-items-center justify-content-center">
     <div class="picture">
+        <h5 class="text-center">{{staff.permission | titlecase}}</h5>
         <img src="assets/platform/images/picto-medecin-h.png" alt="">
+        <div class="text-center" *ngIf="staff.permission === 'admin' && !password && !modify">
+            <button class="btn fs-4" routerLink="/auth/register">
+                <i class="fa-solid fa-plus position-relative" style="bottom: 10px"></i>
+                <i class="fa-solid fa-user-doctor"></i>
+            </button>
+        </div>
     </div>
-    <div class="info row p-5 col-8 fs-5 ">
-        <div class="for-control ">{{staff.firstname}} {{staff.lastname}}</div>
-        <div class="for-control">Téléphone :{{staff.telephone}}</div>
-        <div class="for-control">Login : {{staff.login}}</div>
-        <div class="for-control">Email : {{staff.email}}</div>
-        <div class="for-control">CNI :{{staff.cni}}</div>
-        <div class="for-control">Profession :{{staff.profession}}</div>
-        <div class="for-control">Status :{{staff.permission}}</div>
 
+
+    <div *ngIf="!getModify()" class="info row p-5 col-9 fs-5">
+        <div class="form-control d-flex align-items-center justify-content-center position-relative">
+            <h3 class="">{{(staff.firstname | titlecase) +'  '+(staff.lastname | uppercase)}}</h3>
+            <div class="position-absolute end-0">
+                <button (click)="onModify()" [disabled]="getModify()" class="btn fs-2 text-warning">
+                    <i class="fa-solid fa-edit"></i>
+                </button>
+            </div>
+        </div>
+        <div class="form row g-2 mx-auto">
+            <div class="form-floating col-4">
+                <div class="form-control px-3">
+                    {{staff.birthday}}
+                </div>
+                <label class="form-label ">Birthday</label>
+            </div>
+            <div class="form-floating col-5">
+                <div class="form-control px-3">
+                    {{staff.phone}}
+                </div>
+                <label class="form-label">Téléphone</label>
+            </div>
+            <div class="form-floating col-3">
+                <div class="form-control px-3">
+                    {{staff.sex}}
+                </div>
+                <label class="form-label">Sexe</label>
+            </div>
+            <div class="form-floating col-7">
+                <div class="form-control px-3">
+                    {{staff.email ? staff.email : ''}}
+                </div>
+                <label class="form-label">Email</label>
+            </div>
+            <div class="form-floating col-5">
+                <div class="form-control px-3">
+                    {{staff.cni}}
+                </div>
+                <label class="form-label">CNI</label>
+            </div>
+            <div class="form-floating col-4">
+                <div class="form-control px-3">
+                    {{staff.address ? staff.address.address : ''}}
+                </div>
+                <label class="form-label">Adresse</label>
+            </div>
+            <div class="form-floating col-4">
+                <div class="form-control px-3">
+                    {{staff.address ? staff.address.city : ''}}
+                </div>
+                <label class="form-label">Ville</label>
+            </div>
+            <div class="form-floating col-4">
+                <div class="form-control px-3">
+                    {{staff.address ? staff.address.country : ''}}
+                </div>
+                <label class="form-label">Pays</label>
+            </div>
+            <div class="form-floating col-7">
+                <div class="form-control px-3">
+                    {{staff.adress ? staff.adress.country : ''}}
+                </div>
+                <label class="form-label">Nationnalité</label>
+            </div>
+            <div class="form-floating col-5">
+                <div class="form-control px-3">
+                    {{staff.adress ? staff.adress.country : ''}}
+                </div>
+                <label class="form-label">Profession</label>
+            </div>
+        </div>
+        <div class="text-end small">
+            <button class="btn" (click)="onUpdatePassword()"><i class="fa-solid fa-key mx-1"></i>Modifier le mot passe.</button>
+        </div>
     </div>
+
+
+
+    <form *ngIf="getModify() && !password" class="row p-5 g-2 col-10" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <div class="form-floating col-6">
+            <input type="text" class="form-control" id="firstname" placeholder="" formControlName="firstname">
+            <label for="firstname" class="form-label">Firstname</label>
+        </div>
+        <div class="form-floating col-6">
+            <input type="text" class="form-control" id="lastname" placeholder="" formControlName="lastname">
+            <label for="lastname" class="form-label">Lastname</label>
+        </div>
+        <div class="form-floating col-4">
+            <input type="date" class="form-control" id="birthday" placeholder="1234 Main St" formControlName="birthday">
+            <label for="birthday" class="form-label">Birthday</label>
+        </div>
+        <div class="form-floating col-5">
+            <input type="text" class="form-control" id="phone" placeholder="" formControlName="phone">
+            <label for="phone" class="form-label">Téléphone</label>
+        </div>
+        <div class="form-floating col-3">
+            <div type="text" class="form-control" id="sex" >
+                M <input type="radio" name="sex" value="M" formControlName="sex">
+                F <input type="radio" name="sex" value="F" formControlName="sex">
+            </div>
+            <label for="sex" class="form-label">Sex</label>
+        </div>
+        <div class="form-floating col-7">
+            <input type="text" class="form-control" id="email" placeholder="" formControlName="email">
+            <label for="email" class="form-label">Email</label>
+        </div>
+        <div class="form-floating col-5">
+            <input type="text" class="form-control" id="cni" placeholder="" formControlName="cni">
+            <label for="cni" class="form-label">CNI</label>
+        </div>
+        <div class="form-floating col-4">
+            <input type="text" class="form-control" id="address" placeholder="" formControlName="address">
+            <label class="form-label">Adresse</label>
+        </div>
+        <div class="form-floating col-4">
+            <input type="text" class="form-control" id="city" placeholder="" formControlName="city">
+            <label class="form-label">Ville</label>
+        </div>
+        <div class="form-floating col-4">
+            <input type="text" class="form-control" id="country" placeholder="" formControlName="country">
+            <label class="form-label">Pays</label>
+        </div>
+        <p class="text-danger">{{ errorMessage }}</p>
+        <div class="justify-content-between d-flex col-11">
+            <button type="submit" (click)="onModify()" class="btn  p-2 px-3 fs-5">Annuler</button>
+            <button type="submit"  class="btn  p-2 px-3 fs-5">Enregister</button>
+        </div>
+    </form>
+    <form *ngIf="getModify() && password" class="row p-5 g-2 col-8" [formGroup]="updatePassword" (ngSubmit)="onSubmitP()">
+        <div class="form-floating ">
+            <input type="password" class="form-control" id="password" placeholder="" formControlName="password">
+            <label for="password" class="form-label">Nouveau mot de passe</label>
+        </div>
+        <div class="form-floating ">
+            <input type="password" class="form-control" id="confirmation" placeholder="" formControlName="confirmation">
+            <label for="confirmation" class="form-label">Confirmation de mot de passe</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="expassword" placeholder="1234 Main St" formControlName="exPassword">
+            <label for="expassword" class="form-label">Ancien mot de passe</label>
+        </div>
+        <div class="justify-content-between d-flex col-11">
+            <button type="submit" (click)="annuler()" class="btn  p-2 px-3 fs-5">Annuler</button>
+            <button type="submit"  class="btn  p-2 px-3 fs-5">Enregister</button>
+        </div>
+    </form>
 </div>
-<div class="container mx-auto align-items-center m-4 d-flex justify-content-between">
+<div  *ngIf="!modify" class="container mx-auto align-items-center m-4 d-flex justify-content-between">
     <h4>Patients archivés</h4>
-
 </div>

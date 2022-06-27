@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-pathology-form',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PathologyFormComponent implements OnInit {
 
-  constructor() { }
+    @Output() back = new EventEmitter<boolean> ();
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
 
+    }
+
+    onReturn($event: MouseEvent) {
+        this.back.emit(false);
+    }
+
+    onSubmit() {
+
+        window.location.reload()
+    }
 }

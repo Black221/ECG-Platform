@@ -9,32 +9,35 @@ export class PathologyComponent implements OnInit {
     pathologies: any[] = [
         {
             name: "a",
-            description: "",
+            description: "Lorem ipsum dolor sit amet," +
+                " consectetur adipisicing elit. Commodi" +
+                " consequuntur dolorem eos eveniet" +
+                " excepturi illo nam nostrum sequi." +
+                " Aperiam architecto asperiores eveniet " +
+                "illo incidunt laborum, nobis possimus " +
+                "quisquam repudiandae veritatis.",
             metadata_id: "",
             _id: ""
         }, {
             name: "a",
-            description: "",
+            description: "Lorem ipsum dolor sit amet," +
+                " consectetur adipisicing elit. Commodi" +
+                " consequuntur dolorem eos eveniet" +
+                " excepturi illo nam nostrum sequi." +
+                " Aperiam architecto asperiores eveniet " +
+                "illo incidunt laborum, nobis possimus " +
+                "quisquam repudiandae veritatis.",
             metadata_id: "",
             _id: ""
         }, {
             name: "a",
-            description: "",
-            metadata_id: "",
-            _id: ""
-        }, {
-            name: "a",
-            description: "",
-            metadata_id: "",
-            _id: ""
-        }, {
-            name: "a",
-            description: "",
-            metadata_id: "",
-            _id: ""
-        }, {
-            name: "a",
-            description: "",
+            description: "Lorem ipsum dolor sit amet," +
+                " consectetur adipisicing elit. Commodi" +
+                " consequuntur dolorem eos eveniet" +
+                " excepturi illo nam nostrum sequi." +
+                " Aperiam architecto asperiores eveniet " +
+                "illo incidunt laborum, nobis possimus " +
+                "quisquam repudiandae veritatis.",
             metadata_id: "",
             _id: ""
         }
@@ -46,7 +49,7 @@ export class PathologyComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    addPathology() {
-        this.add = true;
+    addPathology(add: boolean) {
+        this.add = add;
     }
 }

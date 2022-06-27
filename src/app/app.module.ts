@@ -10,7 +10,6 @@ import {AuthModule} from "./auth/auth.module";
 import {PatientModule} from "./patient/patient.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ShareModule} from "./share/share.module";
-import {StaffRoutingModule} from "./staff/staff.routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {httpInterceptorProviders} from "./core/interceptors";
 

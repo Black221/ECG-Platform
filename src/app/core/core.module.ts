@@ -9,6 +9,7 @@ import {RouterModule} from "@angular/router";
 import { ArchiveComponent } from './components/archive/archive.component';
 import {HttpClientModule} from "@angular/common/http";
 import {StaffService} from "../staff/services/staff.service";
+import {StaffModule} from "../staff/staff.module";
 
 
 

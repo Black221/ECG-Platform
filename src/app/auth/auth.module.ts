@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "./services/auth.service";
 import {AuthGard} from "../core/guards/auth.gard";
 import {StorageService} from "./services/storage.service";
+import {AccessGard} from "../core/guards/access.gard";
 
 
 
@@ -24,7 +25,8 @@ import {StorageService} from "./services/storage.service";
     providers: [
         AuthService,
         AuthGard,
-        StorageService
+        StorageService,
+        AccessGard
     ]
 })
 export class AuthModule { }

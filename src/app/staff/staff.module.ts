@@ -7,6 +7,7 @@ import {StaffRoutingModule} from "./staff.routing.module";
 import {ShareModule} from "../share/share.module";
 import {StaffService} from "./services/staff.service";
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -20,7 +21,9 @@ import {HttpClientModule} from "@angular/common/http";
         CommonModule,
         StaffRoutingModule,
         ShareModule,
-        HttpClientModule
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule
     ],
     providers: [
         StaffService
