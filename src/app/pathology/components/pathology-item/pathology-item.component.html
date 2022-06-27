@@ -1,0 +1,40 @@
+<div class="flip-card-container mx-3" style="--hue: 100" >
+    <div class="flip-card">
+        <div class="card-front">
+            <figure>
+                <div class="img-bg"></div>
+                <figcaption>{{pathology.name}}</figcaption>
+                <div class="date">
+                    <app-metadata [id]="pathology.metadata_id"></app-metadata>
+                </div>
+            </figure>
+            <div class="description px-4 ">
+                <p class="">
+                    {{pathology.description}}
+                </p>
+            </div>
+        </div>
+        <div class="card-back">
+            <figure>
+                <div class="img-bg"></div>
+            </figure>
+            <div class="position-absolute top-0 text-end p-5">
+                <a class="link-warning fs-3 text-decoration-none" routerLink="/pathologies/edit/{{index}}"><i class="fa-solid fa-pen-to-square"></i></a>
+            </div>
+            <button role="link" ><a class="text-decoration-none link-info fs-2" routerLink="/pathologies/view/{{pathology._id}}"><i class="fa-solid fa-eye"></i></a></button>
+            <div class="design-container">
+                <span class="design design--1"></span>
+                <span class="design design--2"></span>
+                <span class="design design--3"></span>
+                <span class="design design--4"></span>
+                <span class="design design--5"></span>
+                <span class="design design--6"></span>
+                <span class="design design--7"></span>
+                <span class="design design--8"></span>
+            </div>
+            <div class="position-absolute bottom-0 text-end p-5">
+                <button class="text-danger fs-3 text-decoration-none" (click)="onDelete(pathology._id)"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

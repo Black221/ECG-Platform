@@ -1,0 +1,8 @@
+<div class="container presentation justify-content-between d-flex mt-3" (click)="drop()">
+    <div class="content col-2">Numero</div>
+    <div class="content col-4 ">papa bouna bamba</div>
+    <div class="content col-3">bar</div>
+    <div class="content col-2">10/10/2002</div>
+    <div class="content text-center" style="width: 50px">m</div>
+</div>
+<app-patient-info *ngIf="dropInfo" [event]="event" [id]="patient._id"></app-patient-info>

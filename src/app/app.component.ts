@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ECG-Platform';
+  title = 'UCAD-Hôpital le Dantec-UMMISCO';
+
+    getEvent($event: Event) {
+        console.log($event)
+    }
 }

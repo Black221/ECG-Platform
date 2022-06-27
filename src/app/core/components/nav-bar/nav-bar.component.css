@@ -1,0 +1,39 @@
+nav {
+    height: calc(100vh - 110px);
+    overflow: hidden;
+    padding: 0;
+    transition: linear 0.2s;
+}
+
+.menu {
+    background: #BAD9FC;
+    transition: linear 0.2s;
+}
+
+a {
+    color: #001970;
+    padding: 10px;
+    display: block;
+    width: 250px;
+}
+
+i {
+    margin: 0 15px 0 15px;
+}
+a.active {
+    background: #59D22E;
+}
+
+nav.close {
+    width: 0;
+    transition: linear 0.2s;
+}
+
+.navigation {
+    width: 50px;
+    transition: linear .2s;
+}
+
+.navigation:hover {
+    width: 250px;
+}

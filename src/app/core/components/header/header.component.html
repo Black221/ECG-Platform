@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="mx-2 container-fluid">
+        <div class="collapse navbar-collapse">
+            <div class="logo">
+                <img src="assets/platform/images/ucad.jpeg" style="height: 35px" alt="">
+                <img src="assets/platform/images/index.png" style="height: 35px" alt="">
+                <img src="assets/platform/images/ummisco-1.png" style="height: 35px" alt="">
+            </div>
+            <span class ="navbar-brand text-light mx-3 fs-5">{{title}}</span>
+        </div>
+        <div class="profil d-flex" *ngIf="isAuth">
+            <ul class="list-group mx-4 text-end">
+                <li class="list-inline "><a [routerLink]="'/staffs/profile'" class="link-light text-decoration-none">Admin</a></li>
+                <li class="list-inline text-danger"(click)="onLogout()"><i class="fa-solid fa-door-open"></i></li>
+            </ul>
+            <img src="assets/platform/images/picto-medecin-h.png" alt="">
+        </div>
+    </div>
+</nav>

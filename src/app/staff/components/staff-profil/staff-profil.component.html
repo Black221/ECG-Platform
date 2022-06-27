@@ -1,0 +1,23 @@
+<div class="container mx-auto align-items-center m-4 d-flex justify-content-between">
+    <h2>Profil</h2>
+    <button (click)="modify()" class="btn fs-2 text-warning"><i class="fa-solid fa-edit"></i></button>
+</div>
+<div class="container-fluid mx-auto col-9 d-flex align-items-center justify-content-center">
+    <div class="picture">
+        <img src="assets/platform/images/picto-medecin-h.png" alt="">
+    </div>
+    <div class="info row p-5 col-8 fs-5 ">
+        <div class="for-control ">{{staff.firstname}} {{staff.lastname}}</div>
+        <div class="for-control">Téléphone :{{staff.telephone}}</div>
+        <div class="for-control">Login : {{staff.login}}</div>
+        <div class="for-control">Email : {{staff.email}}</div>
+        <div class="for-control">CNI :{{staff.cni}}</div>
+        <div class="for-control">Profession :{{staff.profession}}</div>
+        <div class="for-control">Status :{{staff.permission}}</div>
+
+    </div>
+</div>
+<div class="container mx-auto align-items-center m-4 d-flex justify-content-between">
+    <h4>Patients archivés</h4>
+
+</div>

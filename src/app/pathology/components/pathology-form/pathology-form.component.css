@@ -1,0 +1,18 @@
+* {
+    color: #001970;
+}
+
+.container-content {
+    border-radius: 10px;
+    background: whitesmoke;
+    box-shadow: 1px 1px 10px gray;
+    padding: 30px;
+}
+
+.btn {
+    background: #59d12e;
+}
+
+.form-control {
+    background: rgb(185, 216, 251);
+}

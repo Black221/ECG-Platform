@@ -1,0 +1,13 @@
+<div style="width: 450px; border-radius: 8px" class="m-3">
+    <a [routerLink]="'/ecgs/view/'+[ecg._id]"  class="list-group-item " aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ecg._id}}</h5>
+            <small class="text-muted ">Create at :{{metadata.createdAt | date : 'medium'}}</small>
+        </div>
+        <div class="d-flex w-100 justify-content-between">
+            <p class="mb-1">Patient : {{patient.firstname+' '+patient.lastname+' '+patient.birthday}}</p>
+            <p class="mb-1">{{pathology.name}}</p>
+        </div>
+        <small class="text-muted">last update at:{{metadata.updatedAt |  date : 'medium'}}</small>
+    </a>
+</div>

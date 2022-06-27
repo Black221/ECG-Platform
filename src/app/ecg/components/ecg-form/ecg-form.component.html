@@ -1,0 +1,21 @@
+<div class=" container mt-4 d-flex justify-content-center position-relative">
+    <div class="form-ecg container col-10">
+        <div class="head navbar p-2">
+            <ul class="nav">
+                <li class="nav-link">Choix du patient</li>
+                <li class="nav-link">Ajout ECG</li>
+                <li class="nav-link">Ajout Métadonnées</li>
+                <li class="nav-link">Terminer</li>
+            </ul>
+        </div>
+        <div class="body p-2">
+            <div class="container-etape">
+                <app-choix-patient *ngIf="etape1" [active]="etape1" ></app-choix-patient>
+                <app-ajout-ecg *ngIf="etape2" [active]="etape1" ></app-ajout-ecg>
+                <app-ajout-metadonnees *ngIf="etape3" [active]="etape1"></app-ajout-metadonnees>
+                <app-terminer *ngIf="etape4" [active]="etape1" ></app-terminer>
+            </div>
+            <app-button (emitStep)="getStep($event)"></app-button>
+        </div>
+    </div>
+</div>

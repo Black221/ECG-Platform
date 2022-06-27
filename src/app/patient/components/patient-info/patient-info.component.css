@@ -1,0 +1,10 @@
+* {
+    color: #001970;
+}
+
+.main-container {
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px gray;
+    padding: 10px;
+    background: #ffffff;
+}

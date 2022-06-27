@@ -1,0 +1,65 @@
+<div class="container-head d-flex align-items-center flex-wrap">
+    <div class="col-4">
+        <div class="text-center">
+            <img src="assets/platform/images/picto-medecin-h.png" alt="">
+        </div>
+    </div>
+    <form class="row p-1 g-2 col-8" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <h3 class="  text-center p-3" >Ajouter personnel</h3>
+        <div class="form-floating col-md-5">
+            <input type="text" class="form-control" id="firstname" placeholder="" formControlName="firstname">
+            <label for="firstname" class="form-label">Firstname</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="text" class="form-control" id="lastname" placeholder="" formControlName="lastname">
+            <label for="lastname" class="form-label">Lastname</label>
+        </div>
+        <div class="form-floating col-md-2">
+            <div type="text" class="form-control" id="sex" >
+                M <input type="radio" name="sex" value="M" formControlName="sex">
+                F <input type="radio" name="sex" value="F" formControlName="sex">
+            </div>
+            <label for="sex" class="form-label">Sex</label>
+        </div>
+        <div class="form-floating col-md-6">
+            <input type="login" class="form-control" id="login" placeholder="" formControlName="login">
+            <label for="login" class="form-label">Login</label>
+        </div>
+        <div class="form-floating col-md-5">
+            <input type="password" class="form-control" id="password" placeholder="" formControlName="password">
+            <label for="password" class="form-label">Password</label>
+        </div>
+        <div class="form-floating col-4">
+            <input type="date" class="form-control" id="birthday" placeholder="1234 Main St" formControlName="birthday">
+            <label for="birthday" class="form-label">Birthday</label>
+        </div>
+
+        <div class="form-floating col-4">
+            <input type="text" class="form-control" id="cni" placeholder="" formControlName="cni">
+            <label for="cni" class="form-label">CNI</label>
+        </div>
+        <div class="form-floating col-3">
+            <select class="form-select" formControlName="permission">
+                <option value="">Permission</option>
+                <option value="doctor">Docteur</option>
+                <option value="user">Utilisateur</option>
+                <option value="admin">Admin</option>
+            </select>
+            <label for="profession" class="form-label">permission</label>
+        </div>
+        <div class="form-floating col-6">
+            <input type="text" class="form-control" id="profession" placeholder="" formControlName="profession">
+            <label for="profession" class="form-label">Profession</label>
+        </div>
+        <div class="form-floating col-5">
+            <input type="text" class="form-control" id="telephone" placeholder="" formControlName="phone">
+            <label for="profession" class="form-label">Téléphone</label>
+        </div>
+
+
+        <p class="text-danger">{{ errorMessage }}</p>
+        <div class="text-end col-11">
+            <button type="submit"  [disabled]="signUpForm.invalid" class="btn  p-2 px-3 fs-5">Enregister</button>
+        </div>
+    </form>
+</div>

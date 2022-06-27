@@ -1,0 +1,24 @@
+<div class="main-container">
+    <div class="container-header container mt-4  d-flex justify-content-between align-items-center flex-wrap">
+        <h3>
+            <span>Pathologies</span>
+        </h3>
+        <div class="d-flex align-items-center">
+            <div class="container-input">
+                <input class="form-control-plaintext" type="search" name="search" id="search" placeholder="Rechercher...">
+                <button class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+            <button class="btn fs-4" (click)="addPathology()">
+                <i class="fa-solid fa-plus fs-5 position-relative plus"></i>
+                <i class="fa-solid fa-microscope"></i>
+            </button>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <app-pathology-form *ngIf="add"></app-pathology-form>
+        <div class="container d-flex flex-wrap justify-content-center">
+            <app-pathology-item *ngFor="let pathology of pathologies"
+                                [pathology]="pathology"></app-pathology-item>
+        </div>
+    </div>
+</div>

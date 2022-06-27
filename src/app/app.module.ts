@@ -2,15 +2,35 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import {CoreModule} from "./core/core.module";
+import {AppRoutingModule} from "./app.routing.module";
+import {EcgModule} from "./ecg/ecg.module";
+import {PathologyModule} from "./pathology/pathology.module";
+import {AuthModule} from "./auth/auth.module";
+import {PatientModule} from "./patient/patient.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ShareModule} from "./share/share.module";
+import {StaffRoutingModule} from "./staff/staff.routing.module";
+import {HttpClientModule} from "@angular/common/http";
+import {httpInterceptorProviders} from "./core/interceptors";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule
+    imports: [
+        BrowserModule,
+        CoreModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ShareModule,
+        AuthModule,
+        HttpClientModule
+    ],
+  providers: [
+      httpInterceptorProviders
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
