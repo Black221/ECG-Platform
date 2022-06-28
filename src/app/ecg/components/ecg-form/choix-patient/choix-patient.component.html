@@ -1,93 +1,102 @@
-<div class="d-flex h-100">
-    <div class="choix flex-column align-items-center">
-        <div class="position-relative h-50">
-            <button class="btn" (click)="changeChoix(false)">Selectionner</button>
+<div class="h-100">
+    <div class="card text-center h-100 overflow-hidden">
+        <div class="card-header d-flex ">
+            <ul class="nav nav-tabs card-header-tabs position-relative mt-1">
+                <li class="nav-item" [ngClass]="{active: ajouter}">
+                    <a class="nav-link btn" [ngClass]="{active: ajouter}" aria-current="true" (click)="changeChoix(true)" >Ajouter</a>
+                </li>
+                <li class="nav-item" [ngClass]="{active: !ajouter}">
+                    <a class="nav-link btn" [ngClass]="{active: !ajouter}" aria-current="true" (click)="changeChoix(false)" >Sélectionner</a>
+                </li>
+            </ul>
+            <div *ngIf="!ajouter">
+                <div class="container-input position-absolute end-0 mx-1">
+                    <input class="form-control-plaintext" type="search" name="search" id="search" placeholder="Rechercher...">
+                    <button class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
         </div>
-        <div class="position-relative h-50">
-            <button class="btn" (click)="changeChoix(true)">Ajouter</button>
+        <div *ngIf="ajouter" class="card-body  row g-2" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+            <div class="col-5 form-floating">
+                <input type="text" id="prenom" class="form-control" placeholder="text" formControlName="firstname">
+                <label for="prenom">Prénom</label>
+            </div>
+            <div class="col-4 form-floating">
+                <input type="text" id="nom" class="form-control" placeholder="text" formControlName="lastname">
+                <label for="nom">Nom</label>
+            </div>
+            <div class="col-2 form-floating">
+                <div  class="form-control text-center">
+                    M<input type="radio" class="mx-2" name="sex" value="M" id="sexeM" formControlName="sex">
+                    F<input type="radio" class="mx-2" name="sex" value="F" id="sexeF" formControlName="sex">
+                </div>
+                <label>Sexe</label>
+            </div>
+            <div class="col-3 form-floating">
+                <input type="date" id="dateN" class="form-control" placeholder="text" formControlName="birthday">
+                <label for="dateN">Date de naissance</label>
+            </div>
+            <div class="col-4 form-floating">
+                <input type="text" id="telephone" class="form-control" placeholder="text" formControlName="phone">
+                <label for="telephone">Téléphone</label>
+            </div>
+            <div class="col-4 form-floating">
+                <input type="text" id="nationnalite" class="form-control" placeholder="text" formControlName="nationality">
+                <label for="nationnalite">Nationnalité</label>
+            </div>
+            <div class="col-3 form-floating">
+                <input type="text" id="adresse" class="form-control" placeholder="text" formControlName="address">
+                <label for="adresse">Adresse</label>
+            </div>
+            <div class="col-3 form-floating">
+                <input type="text" id="ville" class="form-control" placeholder="text" formControlName="city">
+                <label for="ville">Ville</label>
+            </div>
+            <div class="col-2 form-floating">
+                <input type="text" id="pays" class="form-control" placeholder="text" formControlName="country">
+                <label for="pays">Pays</label>
+            </div>
+            <div class="col-3 form-floating">
+                <input type="text" id="cni" class="form-control" placeholder="text" formControlName="cni">
+                <label for="cni">CNI</label>
+            </div>
+<!--            <div class="col-4" *ngFor="let ant of antecedents">-->
+<!--                <input type="text" class="form-control" *ngIf="ant">-->
+<!--            </div>-->
+<!--            <div class="col-9">-->
+<!--                <button class="btn ant" (click)="addAntecedent()"><i class="fa-solid fa-plus"></i>Ajouter antécédent</button>-->
+<!--            </div>-->
+        </div>
+        <div *ngIf="!ajouter" class="container-patient position-relative mb-2  card-body">
+            <div class="">
+                <div class="row fw-bold">
+                    <div class="col-sm-1"></div>
+                    <div class="col-2">Numero</div>
+                    <div class="col-3 " style="cursor: pointer" (click)="filterFirstname()">Prénom</div>
+                    <div class="col-2" style="cursor: pointer" (click)="filterLastname()">Nom</div>
+                    <div class="col-3" style="cursor: pointer" (click)="filterBirthday()">Date de naissance</div>
+                    <div class="col-1" style="cursor: pointer" (click)="filterSex()">Sex</div>
+                </div>
+            </div>
+            <div class="row align-items-center mt-3" *ngFor="let patient of patients">
+                <div class="col-1 btn" (click)="onSelect(patient._id)"><i class="fa-solid fa-hand-point-right text-info"></i></div>
+                <div class="col-2" >{{patient.numPatient}}</div>
+                <div class="col-3">{{patient.fistname}}</div>
+                <div class="col-2">{{patient.lastname}}</div>
+                <div class="col-3">{{patient.birthday}}</div>
+                <div class="col-1">{{patient.sex}}</div>
+            </div>
         </div>
     </div>
-    <div *ngIf="ajouter" class="container d-flex justify-content-between flex-wrap">
-        <div class="col-5 form-floating">
-            <input type="text" id="prenom" class="form-control" placeholder="text">
-            <label for="prenom">Prénom</label>
-        </div>
-        <div class="col-4 form-floating">
-            <input type="text" id="nom" class="form-control" placeholder="text">
-            <label for="nom">Nom</label>
-        </div>
-        <div class="col-2 form-floating">
-            <div  class="form-control text-center">
-                M<input type="radio" class="mx-2" name="sexe" value="M" id="sexeM">
-                F<input type="radio" class="mx-2" name="sexe" value="F" id="sexeF">
+    <div class=" button-div">
+        <div class="d-flex justify-content-between">
+            <button routerLink="/ecgs" class="btn">Annuler</button>
+            <div *ngIf="ajouter">
+                <button class="btn" type="submit" [disabled]="patientForm.invalid && !canSkip"  (click)="onSubmit()">Suivant</button>
             </div>
-            <label>Sexe</label>
-        </div>
-        <div class="col-3 form-floating">
-            <input type="date" id="dateN" class="form-control" placeholder="text">
-            <label for="dateN">Date de naissance</label>
-        </div>
-        <div class="col-4 form-floating">
-            <input type="text" id="telephone" class="form-control" placeholder="text">
-            <label for="telephone">Téléphone</label>
-        </div>
-        <div class="col-4 form-floating">
-            <input type="text" id="nationnalite" class="form-control" placeholder="text">
-            <label for="nationnalite">Nationnalité</label>
-        </div>
-        <div class="col-3 form-floating">
-            <input type="text" id="adresse" class="form-control" placeholder="text">
-            <label for="adresse">Adresse</label>
-        </div>
-        <div class="col-3 form-floating">
-            <input type="text" id="ville" class="form-control" placeholder="text">
-            <label for="ville">Ville</label>
-        </div>
-        <div class="col-2 form-floating">
-            <input type="text" id="pays" class="form-control" placeholder="text">
-            <label for="pays">Pays</label>
-        </div>
-        <div class="col-3 form-floating">
-            <input type="text" id="cni" class="form-control" placeholder="text">
-            <label for="cni">CNI</label>
-        </div>
-        <div class="col-4" *ngFor="let ant of antecedents">
-            <input type="text" class="form-control" *ngIf="ant">
-        </div>
-        <div class="col-9">
-            <button class="btn ant" (click)="addAntecedent()"><i class="fa-solid fa-plus"></i>Ajouter antécédent</button>
-        </div>
-    </div>
-    <div *ngIf="!ajouter" class="container container-patient">
-        <div class="d-flex justify-content-end">
-            <div class="container-input">
-                <input class="form-control-plaintext" type="search" name="search" id="search" placeholder="Rechercher...">
-                <button class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+            <div *ngIf="!ajouter">
+                <button class="btn" (click)="onSkip()" [disabled]="!canSkip">Skip</button>
             </div>
         </div>
-        <div class="container px-4 border-bottom border-3 table-head table-responsive table mt-4">
-            <div class="justify-content-between d-flex fw-bold col-12 py-2">
-                <div class="col-2">Numero</div>
-                <div class="col-4 " style="cursor: pointer" (click)="filterFirstname()">Firstname</div>
-                <div class="col-3" style="cursor: pointer" (click)="filterLastname()">Lastname</div>
-                <div class="col-2" style="cursor: pointer" (click)="filterBirthday()">Birthday</div>
-                <div class="" style="width: 50px;cursor: pointer" (click)="filterSex()">Sex</div>
-            </div>
-        </div>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
     </div>
 </div>

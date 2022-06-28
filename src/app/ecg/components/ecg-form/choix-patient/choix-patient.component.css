@@ -5,12 +5,7 @@
 .choix {
     width: 35px;
 }
-button {
-    width: 190px;
-    background: rgba(89,210,46,1);
-    background:  linear-gradient(315deg, rgba(89,210,46,1) 0%, rgba(67,124,186,1) 100%);
-    line-height: 14px;
-}
+
 button.ant {
     background: none;
 }
@@ -48,4 +43,26 @@ button.ant {
 .container-input input {
     border-radius: 20px;
     padding-inline: 15px;
+}
+
+li a {
+    border: none;
+}
+li.active  a{
+    background: rgb(218, 239, 216);
+    border: none;
+}
+
+.card-body {
+    background: rgb(217, 238, 215);
+
+}
+button {
+    background: #BAD9FC;
+    margin: 10px;
+}
+
+button:hover {
+    background: #437CBA;
+    color: white;
 }

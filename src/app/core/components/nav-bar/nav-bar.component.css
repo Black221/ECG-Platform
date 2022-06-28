@@ -18,7 +18,8 @@ a {
 }
 
 i {
-    margin: 0 15px 0 15px;
+    font-size: 17px;
+    margin: 0 18px 0 15px;
 }
 a.active {
     background: #59D22E;

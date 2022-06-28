@@ -8,13 +8,13 @@
                 <input class="form-control-plaintext" type="search" name="search" id="search" placeholder="Rechercher...">
                 <button class="btn"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
-            <button class="btn fs-4">
+            <button class="btn fs-4" [disabled]="addPatient" (click)="onAddPatient()">
                 <i class="fa-solid fa-plus fs-5 position-relative plus"></i>
                 <i class="fa-solid fa-bed-pulse"></i>
             </button>
         </div>
     </div>
-    <div class="container px-4 border-bottom border-3 table-head table-responsive table mt-4">
+    <div *ngIf="!addPatient" class="container px-4 border-bottom border-3 table-head table-responsive table mt-4">
         <div class="justify-content-between d-flex fw-bold col-12 py-2">
             <div class="col-2">Numero</div>
             <div class="col-4 " style="cursor: pointer" (click)="filterFirstname()">Firstname</div>
@@ -23,13 +23,15 @@
             <div class="" style="width: 50px;cursor: pointer" (click)="filterSex()">Sex</div>
         </div>
     </div>
-    <div>
+    <div *ngIf="!addPatient">
         <app-patient-item></app-patient-item>
         <app-patient-item></app-patient-item>
         <app-patient-item></app-patient-item>
         <app-patient-item></app-patient-item>
         <app-patient-item></app-patient-item>
         <app-patient-item></app-patient-item>
-
+    </div>
+    <div *ngIf="addPatient">
+        <app-patient-form (remove)="addPatient = $event"></app-patient-form>
     </div>
 </div>

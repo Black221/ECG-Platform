@@ -1,25 +1,41 @@
-<div class="container d-flex h-100">
-    <div class="w-75 h-100 px-4">
-        <div class="col-8 h-25 form-floating">
-            <div class="form-control h-100">
+<form  [formGroup]="ecgForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div class="container d-flex h-100">
+        <div class="w-75 h-100 px-4">
+            <div class="col-8 h-25 form-floating">
+                <div class="form-control h-100">
+                <span *ngFor="let pathology of pathologies">
+                    {{pathology}},
+                </span>
+                </div>
+                <label>Pathologies</label>
             </div>
-            <label>Pathologies</label>
+            <div class="form-floating">
+                <textarea name="" id="" style="height: 170px" rows="10" class="form-control mt-2" placeholder="" formControlName="comment"></textarea>
+                <label class="form-label">Commentaire</label>
+            </div>
+            <div class="m-3">
+                <label for="formFile" class="form-label">Selectionner un fichier</label>
+                <input class="form-control" (change)="uploadFile($event)" type="file" id="formFile">
+            </div>
         </div>
-        <div class="form-floating">
-            <textarea name="" id="" style="height: 170px" rows="10" class="form-control mt-2" placeholder=""></textarea>
-            <label class="form-label">Commentaire</label>
+        <div>
+            <select class="form-select" (change)="getPathology($event)" style="min-width: 250px">
+                <option value="">----Pathologies----</option>
+                <option value="a">Pathology1</option>
+                <option value="b">Pathology2</option>
+                <option value="c">Pathology3</option>
+                <option value="d">Pathology4</option>
+            </select>
         </div>
-        <div class="m-3">
-            <label for="formFile" class="form-label">Selectionner un fichier</label>
-            <input class="form-control" type="file" id="formFile">
+
+    </div>
+    <div class=" button-div">
+        <div class="d-flex justify-content-between">
+            <button routerLink="/ecgs" class="btn">Annuler</button>
+            <div>
+                <button class="btn"  (click)="onPreview()">Précédent</button>
+                <button class="btn" type="submit" [disabled]="(!pathologies.length || !file) && !canSkip" >Suivant</button>
+            </div>
         </div>
     </div>
-    <div>
-        <select class="form-select" style="min-width: 250px">
-            <option value="">Pathology</option>
-            <option value="">Pathology ..........</option>
-            <option value="">Pathology</option>
-            <option value="">Pathology</option>
-        </select>
-    </div>
-</div>
+</form>

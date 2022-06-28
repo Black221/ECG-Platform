@@ -9,7 +9,7 @@ import {AuthGard} from "../core/guards/auth.gard";
 
 const routes: Routes = [
     { path: 'patient/:id', component: EcgPatientComponent , canActivate: [AuthGard] },
-    { path: 'view/:id', component: SpecificEcgComponent , canActivate: [AuthGard] },
+    { path: 'view/:id', component: SpecificEcgComponent , /*canActivate: [AuthGard]*/ },
     { path: 'new', component: EcgFormComponent , canActivate: [AuthGard] },
     { path: 'edit/:id', component: EcgFormComponent , canActivate: [AuthGard] },
     { path: '', component: EcgComponent , canActivate: [AuthGard] },

@@ -5,6 +5,7 @@ import { PathologyItemComponent } from './components/pathology-item/pathology-it
 import { PathologyFormComponent } from './components/pathology-form/pathology-form.component';
 import {PathologyRoutingModule} from "./pathology.routing.module";
 import {ShareModule} from "../share/share.module";
+import {PathologyService} from "./services/pathology.service";
 
 
 
@@ -22,6 +23,10 @@ import {ShareModule} from "../share/share.module";
     exports: [
         PathologyItemComponent,
         PathologyFormComponent,
+    ],
+    providers: [
+        PathologyService,
+
     ]
 })
 export class PathologyModule { }

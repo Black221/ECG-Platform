@@ -10,8 +10,14 @@
         </div>
         <div class="profil d-flex" *ngIf="isAuth">
             <ul class="list-group mx-4 text-end">
-                <li class="list-inline "><a [routerLink]="'/staffs/profile'" class="link-light text-decoration-none">Admin</a></li>
-                <li class="list-inline text-danger"(click)="onLogout()"><i class="fa-solid fa-door-open"></i></li>
+                <li class="list-inline ">
+                    <a [routerLink]="'/staffs/profile'" class="link-light text-decoration-none">
+                    {{login}}
+                    </a>
+                </li>
+                <a class=" text-danger "(click)="onLogout()">
+                    <i class="fa-solid fa-door-open"></i>
+                </a>
             </ul>
             <img src="assets/platform/images/picto-medecin-h.png" alt="">
         </div>

@@ -7,16 +7,16 @@
     overflow: hidden;
 }
 
-li:nth-child(1) {
+li.active:nth-child(1) {
     background: rgba(75, 181, 67, 0.2);
 }
-li:nth-child(2) {
+li.active:nth-child(2) {
     background: rgba(75, 181, 67, 0.38);
 }
-li:nth-child(3) {
+li.active:nth-child(3) {
     background: rgba(89, 210, 46, 0.55);
 }
-li:nth-child(4) {
+li.active:nth-child(4) {
     background: rgba(89, 210, 46, 1);
 }
 .body {
@@ -56,16 +56,16 @@ li:nth-child(4) {
 }
 
 
-li:nth-child(1)::before, li:nth-child(1)::after {
-    background: rgb(186, 226, 182);
-}
-li:nth-child(2)::before, li:nth-child(2)::after {
-    background: rgb(163, 229, 139);
-}
-li:nth-child(3)::before, li:nth-child(3)::after {
-    background: rgb(89, 209, 46);
-}
-li:nth-child(4)::before, li:nth-child(4)::after {
+/*li.active:nth-child(1)::before, li.active:nth-child(1)::after {*/
+/*    background: rgb(186, 226, 182);*/
+/*}*/
+/*li.active:nth-child(2)::before, li.active:nth-child(2)::after {*/
+/*    background: rgb(163, 229, 139);*/
+/*}*/
+/*li.active:nth-child(3)::before, li.active:nth-child(3)::after {*/
+/*    background: rgb(89, 209, 46);*/
+/*}*/
+li.active::before, li.active::after {
     background: rgb(253, 253, 254);
 }
 
@@ -74,3 +74,4 @@ li:nth-child(4)::before, li:nth-child(4)::after {
     border-radius: 10px;
     overflow: hidden;
 }
+

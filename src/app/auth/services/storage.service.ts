@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-const USER_KEY = 'azerty78thisismy78529key42279password';
+const USER_KEY = 'AUTH_KEY';
 @Injectable()
 export class StorageService {
     constructor() {}
@@ -7,6 +7,19 @@ export class StorageService {
     clean(): void {
         window.sessionStorage.clear();
     }
+
+    public saveLogin (login: string): void {
+        window.sessionStorage.setItem('LOGIN', JSON.stringify(login));
+    }
+
+    public getLogin (): string {
+        const user = window.sessionStorage.getItem('LOGIN');
+        if (user) {
+            return JSON.parse(user);
+        }
+        return "";
+    }
+
     public saveUser(user: any): void {
         window.sessionStorage.removeItem(USER_KEY);
         window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));

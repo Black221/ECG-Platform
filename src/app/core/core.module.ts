@@ -10,6 +10,9 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import {HttpClientModule} from "@angular/common/http";
 import {StaffService} from "../staff/services/staff.service";
 import {StaffModule} from "../staff/staff.module";
+import {UserGard} from "./guards/user.gard";
+import {AdminGard} from "./guards/admin.gard";
+import {EcgModule} from "../ecg/ecg.module";
 
 
 
@@ -32,6 +35,8 @@ import {StaffModule} from "../staff/staff.module";
         RouterModule,
     ],
     providers: [
+        UserGard,
+        AdminGard,
         StaffService
     ]
 })

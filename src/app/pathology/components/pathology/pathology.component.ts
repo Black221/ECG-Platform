@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PathologyService} from "../../services/pathology.service";
 
 @Component({
   selector: 'app-pathology',
@@ -44,12 +45,29 @@ export class PathologyComponent implements OnInit {
     ];
     add = false
 
-    constructor() { }
+    constructor (
+        private pathologyService: PathologyService
+    ) { }
 
     ngOnInit(): void {
     }
 
     addPathology(add: boolean) {
         this.add = add;
+    }
+
+    updatePathology () {
+
+    }
+
+    onSubmit () {
+
+    }
+
+    onUpdate () {
+
+    }
+
+    getPathology () {
     }
 }

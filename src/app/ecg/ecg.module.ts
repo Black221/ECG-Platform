@@ -12,6 +12,8 @@ import { AjoutMetadonneesComponent } from './components/ecg-form/ajout-metadonne
 import { TerminerComponent } from './components/ecg-form/terminer/terminer.component';
 import { ButtonComponent } from './components/ecg-form/button/button.component';
 import {PatientModule} from "../patient/patient.module";
+import {PdfViewerModule} from "ng2-pdf-viewer";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -29,12 +31,16 @@ import {PatientModule} from "../patient/patient.module";
         ButtonComponent
     ],
     exports: [
-        EcgFormComponent
+        EcgFormComponent,
+        ChoixPatientComponent,
     ],
     imports: [
         CommonModule,
         EcgRoutingModule,
         PatientModule,
+        PdfViewerModule,
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class EcgModule { }

@@ -16,12 +16,14 @@ export class AuthGard implements CanActivate{
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> {
+
         if (this.authService.getToken()) {
             return true;
         } else {
             if (this.storageService.isLoggedIn()) {
                 this.authService.setToken(this.storageService.getUser().token)
                 this.authService.setUserId(this.storageService.getUser().userId)
+                this.authService.setStatus(this.storageService.getUser().status)
                 return true;
             }
             this.router.navigateByUrl('/auth/login')

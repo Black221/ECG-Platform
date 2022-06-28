@@ -1,1 +1,45 @@
-<p>patient-form works!</p>
+<div class="card-body  row g-2" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <div class="col-5 form-floating">
+        <input type="text" id="prenom" class="form-control" placeholder="text" formControlName="firstname">
+        <label for="prenom">Prénom</label>
+    </div>
+    <div class="col-4 form-floating">
+        <input type="text" id="nom" class="form-control" placeholder="text" formControlName="lastname">
+        <label for="nom">Nom</label>
+    </div>
+    <div class="col-2 form-floating">
+        <div  class="form-control text-center">
+            M<input type="radio" class="mx-2" name="sex" value="M" id="sexeM" formControlName="sex">
+            F<input type="radio" class="mx-2" name="sex" value="F" id="sexeF" formControlName="sex">
+        </div>
+        <label>Sexe</label>
+    </div>
+    <div class="col-3 form-floating">
+        <input type="date" id="dateN" class="form-control" placeholder="text" formControlName="birthday">
+        <label for="dateN">Date de naissance</label>
+    </div>
+    <div class="col-4 form-floating">
+        <input type="text" id="telephone" class="form-control" placeholder="text" formControlName="phone">
+        <label for="telephone">Téléphone</label>
+    </div>
+    <div class="col-4 form-floating">
+        <input type="text" id="nationnalite" class="form-control" placeholder="text" formControlName="nationality">
+        <label for="nationnalite">Nationnalité</label>
+    </div>
+    <div class="col-3 form-floating">
+        <input type="text" id="adresse" class="form-control" placeholder="text" formControlName="address">
+        <label for="adresse">Adresse</label>
+    </div>
+    <div class="col-3 form-floating">
+        <input type="text" id="ville" class="form-control" placeholder="text" formControlName="city">
+        <label for="ville">Ville</label>
+    </div>
+    <div class="col-2 form-floating">
+        <input type="text" id="pays" class="form-control" placeholder="text" formControlName="country">
+        <label for="pays">Pays</label>
+    </div>
+    <div class="col-3 form-floating">
+        <input type="text" id="cni" class="form-control" placeholder="text" formControlName="cni">
+        <label for="cni">CNI</label>
+    </div>
+</div>

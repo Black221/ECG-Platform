@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./specific-ecg.component.css']
 })
 export class SpecificEcgComponent implements OnInit {
+    ecg: any;
+    metadata: any;
+    ecgMetadata: any;
+    patient: any;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
+    onDelete(_id: any) {
+
+    }
+
+    getPath() {
+        return "";
+    }
 }

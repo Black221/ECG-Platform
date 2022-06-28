@@ -2,20 +2,42 @@
     <div class="form-ecg container col-10">
         <div class="head navbar p-2">
             <ul class="nav">
-                <li class="nav-link">Choix du patient</li>
-                <li class="nav-link">Ajout ECG</li>
-                <li class="nav-link">Ajout Métadonnées</li>
-                <li class="nav-link">Terminer</li>
+                <li class="nav-link" style="cursor:pointer;" [ngClass]="{active: step1}">
+                    <a>Patients</a>
+                </li>
+                <li class="nav-link" style="cursor:pointer;" [ngClass]="{active: step2}">
+                    <a>Ajout ECG</a>
+                </li>
+                <li class="nav-link" style="cursor:pointer;" [ngClass]="{active: step3}">
+                    <a>Information ecg</a>
+                </li>
+                <li class="nav-link" style="cursor:pointer;" [ngClass]="{active: step4}">
+                    <a>Traitement</a>
+                </li>
             </ul>
         </div>
         <div class="body p-2">
             <div class="container-etape">
-                <app-choix-patient *ngIf="etape1" [active]="etape1" ></app-choix-patient>
-                <app-ajout-ecg *ngIf="etape2" [active]="etape1" ></app-ajout-ecg>
-                <app-ajout-metadonnees *ngIf="etape3" [active]="etape1"></app-ajout-metadonnees>
-                <app-terminer *ngIf="etape4" [active]="etape1" ></app-terminer>
+                <app-choix-patient *ngIf="step1 && !step2" [active]="step1"
+                                   (passed)="getStep1($event)"
+                                   (skip) = "step2 = $event"
+                                   [canSkip] = "canSkip1"
+                ></app-choix-patient>
+                <app-ajout-ecg *ngIf="step2 && !step3" [active]="step2"
+                               (passed)= "getStep2($event)"
+                               (preview)="step2=$event"
+                               (skip) = "step3 = $event"
+                               [canSkip] = "canSkip2"
+                ></app-ajout-ecg>
+                <app-ajout-metadonnees *ngIf="step3 && !step4" [active]="step3"
+                                       (passed)="getStep3($event)"
+                                       (preview)="step3=$event"
+                                       [canSkip] = "canSkip3"
+                ></app-ajout-metadonnees>
+                <app-terminer *ngIf="step4" [active]="step4"
+                              (passed)="getStep4($event)"
+                ></app-terminer>
             </div>
-            <app-button (emitStep)="getStep($event)"></app-button>
         </div>
     </div>
 </div>

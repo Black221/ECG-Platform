@@ -25,7 +25,7 @@ import {httpInterceptorProviders} from "./core/interceptors";
         ReactiveFormsModule,
         ShareModule,
         AuthModule,
-        HttpClientModule
+        HttpClientModule,
     ],
   providers: [
       httpInterceptorProviders

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PatientService} from "../../services/patient.service";
 
 @Component({
   selector: 'app-patient',
@@ -6,11 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
+    addPatient: boolean = false;
 
-  constructor() { }
+    constructor (
+        private patientService: PatientService,
+    ) { }
 
-  ngOnInit(): void {
-  }
+    onAddPatient () {
+        this.addPatient = true;
+    }
+
+    ngOnInit(): void {
+    }
 
     filterFirstname() {
 
@@ -26,5 +34,20 @@ export class PatientComponent implements OnInit {
 
     filterSex() {
 
+    }
+
+    updatePathology () {
+
+    }
+
+    onSubmit () {
+
+    }
+
+    onUpdate () {
+
+    }
+
+    getPathology () {
     }
 }

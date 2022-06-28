@@ -8,27 +8,27 @@
                 <a class ="nav-link" routerLinkActive="active" routerLink="/home"><i class="fa-solid fa-house"></i> Home </a>
             </li>
             <li class ="nav-item">
-
                 <a class ="nav-link" routerLinkActive="active" routerLink="/pathologies"><i class="fa-solid fa-microscope"></i> Pathologies </a>
             </li>
             <li class ="nav-item">
-
                 <a class ="nav-link" routerLinkActive="active" routerLink="/ecgs"><i class="fa-solid fa-heart-pulse"></i> Électrocardiogrammes </a>
             </li>
-            <li class ="nav-item">
-
+            <li class ="nav-item" *ngIf="!isUser">
                 <a class ="nav-link" routerLinkActive="active" routerLink="/patients"><i class="fa-solid fa-bed-pulse"></i> Patients </a>
             </li>
+            <li class ="nav-item" *ngIf="isAdmin">
+                <a class ="nav-link" routerLinkActive="active" routerLink="/staffs"><i class="fa-solid fa-user-doctor"></i> Personnels </a>
+            </li>
         </ul>
-        <ul class ="nav navbar-nav">
+        <ul class ="nav navbar-nav mb-3">
             <li class ="nav-item">
                 <a class ="nav-link" routerLinkActive="active" routerLink="/staffs/profile">
                     <i class="fa-solid fa-user"></i>
                     <span class="small mx-4">Profil</span>
                 </a>
             </li>
-            <li class ="nav-item">
-                <a class ="nav-link" routerLinkActive="active" routerLink="/archive">
+            <li class ="nav-item" *ngIf="isAdmin">
+                <a class ="nav-link" routerLinkActive="active" routerLink="/archives">
                     <i class="fa-solid fa-box-archive"></i>
                     <span class="small mx-4">Voir archive </span>
                 </a>

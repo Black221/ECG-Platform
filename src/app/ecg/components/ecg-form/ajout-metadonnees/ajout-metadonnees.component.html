@@ -1,1 +1,37 @@
-<p>ajout-metadonnees works!</p>
+<form class="h-100" [formGroup]="metadataForm" (ngSubmit)="onSubmit()">
+    <div class="container row g-2 h-100">
+        <div class="form-floating col-6">
+            <input type="text" class="form-control" formControlName ="" placeholder="">
+            <label class="form-label">this</label>
+        </div>
+        <div class="form-floating col-4">
+            <input type="text" class="form-control" formControlName ="" placeholder="">
+            <label class="form-label">this</label>
+        </div>
+        <div class="form-floating col-2">
+            <input type="text" class="form-control" formControlName ="" placeholder="">
+            <label class="form-label">this</label>
+        </div>
+        <div class="form-floating col-6">
+            <input type="text" class="form-control" formControlName ="" placeholder="">
+            <label class="form-label">this</label>
+        </div>
+        <div class="form-floating col-6">
+            <input type="text" class="form-control" formControlName ="" placeholder="">
+            <label class="form-label">this</label>
+        </div>
+        <div class="form-floating col-6">
+            <input type="text" class="form-control" formControlName ="" placeholder="">
+            <label class="form-label">this</label>
+        </div>
+    </div>
+    <div class=" button-div">
+        <div class="d-flex justify-content-between">
+            <button routerLink="/ecgs" class="btn">Annuler</button>
+            <div>
+                <button class="btn"  (click)="onPreview()">Précédent</button>
+                <button class="btn" type="submit" [disabled]="metadataForm.invalid" >Enregister</button>
+            </div>
+        </div>
+    </div>
+</form>

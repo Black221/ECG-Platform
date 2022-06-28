@@ -5,6 +5,8 @@ import { PatientItemComponent } from './components/patient-item/patient-item.com
 import { PatientFormComponent } from './components/patient-form/patient-form.component';
 import {PathologyRoutingModule} from "../pathology/pathology.routing.module";
 import { PatientInfoComponent } from './components/patient-info/patient-info.component';
+import {PatientService} from "./services/patient.service";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -20,7 +22,11 @@ import { PatientInfoComponent } from './components/patient-info/patient-info.com
     ],
     imports: [
         CommonModule,
-        PathologyRoutingModule
+        PathologyRoutingModule,
+        ReactiveFormsModule
+    ],
+    providers: [
+        PatientService
     ]
 })
 export class PatientModule { }

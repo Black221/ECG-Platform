@@ -6,7 +6,7 @@ import {StaffService} from "../../staff/services/staff.service";
 
 @Injectable()
 
-export class AccessGard implements CanActivate {
+export class UserGard implements CanActivate {
 
     constructor(
         private router: Router,

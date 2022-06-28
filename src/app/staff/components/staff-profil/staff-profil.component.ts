@@ -11,21 +11,8 @@ export class StaffProfilComponent implements OnInit {
 
     modify: boolean = false;
 
-    staff: any = {
-        firstname: "Admin",
-        lastname: "Admin",
-        birthday: "10/10/2001",
-        cni: "222222222222",
-        permission: "Admin",
-        phone: "777777777",
-        email: "admin@admin.sn",
-        address: {
-            address: "Dakar",
-            city: "Dakar",
-            country: "Senegal"
-        },
+    staff: any;
 
-    };
     updateForm!: FormGroup;
     updatePassword!: FormGroup;
     errorMessage: any;
@@ -51,10 +38,6 @@ export class StaffProfilComponent implements OnInit {
     }
 
     onModify() {
-        if (this.password){
-            this.initFormP();
-            return;
-        }
         this.errorMessage = "";
         this.modify = !this.modify;
         this.initForm()
@@ -137,10 +120,27 @@ export class StaffProfilComponent implements OnInit {
     onUpdatePassword() {
         this.modify = !this.password;
         this.password = !this.password;
+        this.initFormP();
     }
 
     onSubmitP() {
-
+        // @ts-ignore
+        console.log(this.updatePassword.value)
+        // @ts-ignore
+        if (this.updatePassword.get('password').value !== this.updatePassword.get('confirmation').value) {
+            this.errorMessage = "Mot de passe non valide";
+            return;
+        }
+        // @ts-ignore
+        this.staffService.updatePassword(this.updatePassword.value).then(
+            res => {
+                if (res){
+                    window.location.reload();
+                }
+            }, err => {
+                this.errorMessage = err.error;
+            }
+        )
     }
 
     annuler() {

@@ -4,6 +4,7 @@ import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class AuthService {
+    private status!: string;
 
     constructor(
         private http: HttpClient
@@ -105,5 +106,9 @@ export class AuthService {
         this.token = undefined;
         //@ts-ignore
         this.userId = undefined;
+    }
+
+    setStatus(status: string) {
+        this.status = status;
     }
 }

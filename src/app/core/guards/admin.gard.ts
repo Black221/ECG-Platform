@@ -6,7 +6,7 @@ import {StaffService} from "../../staff/services/staff.service";
 
 @Injectable()
 
-export class AccessGard implements CanActivate {
+export class AdminGard implements CanActivate {
 
     constructor(
         private router: Router,
@@ -15,7 +15,7 @@ export class AccessGard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> {
-        if (this.storageService.getUser().status !== "user") {
+        if (this.storageService.getUser().status === "admin") {
             return true;
         } else {
             this.router.navigateByUrl('/home');

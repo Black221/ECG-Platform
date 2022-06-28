@@ -36,6 +36,8 @@ export class SigninComponent implements OnInit {
             .then((res) => {
                 if (res) {
                     //@ts-ignore
+                    this.storageService.saveLogin(this.signInForm.get('login').value)
+                    //@ts-ignore
                     this.storageService.saveUser(res);
                     //@ts-ignore
                     this.authService.setToken(res.token);

@@ -1,0 +1,10 @@
+.head img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+
+.main-container {
+    overflow-y: scroll;
+    height: calc(100vh - 66px);
+}

@@ -8,6 +8,7 @@ import {ShareModule} from "../share/share.module";
 import {StaffService} from "./services/staff.service";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { GetStaffProfileComponent } from './components/get-staff-profile/get-staff-profile.component';
 
 
 
@@ -15,7 +16,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     declarations: [
         StaffComponent,
         StaffProfilComponent,
-        StaffItemComponent
+        StaffItemComponent,
+        GetStaffProfileComponent
     ],
     imports: [
         CommonModule,

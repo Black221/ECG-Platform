@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
     @Input() title: any;
     isAuth!: boolean;
     // idAuth: string;
+    login!: string;
 
     constructor(
         private storageService: StorageService,
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(): void {
         this.isAuth = this.storageService.isLoggedIn();
+        this.login = this.storageService.getLogin();
     }
 
     onLogout() {

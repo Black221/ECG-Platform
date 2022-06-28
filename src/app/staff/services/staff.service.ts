@@ -55,4 +55,27 @@ export class StaffService {
             }
         )
     }
+
+    updatePassword (password: any) {
+        const id = this.storageService.getUser().userId;
+        return new Promise (
+            (resolve, reject) => {
+                this.http.put(environment.AUTH_API+'staff/password/'+id, password).subscribe(
+                (res) => {
+                        this.isLoaded = true;
+                        resolve(res);
+                    },
+                    (error) => {
+                        this.isLoaded = false;
+                        reject(error);
+                    },
+                    () => {
+                        this.isLoaded = false;
+                        return "complete";
+                    }
+                )
+            }
+        )
+    }
+
 }
