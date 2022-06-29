@@ -5,16 +5,16 @@
         </h3>
         <div class="d-flex align-items-center">
             <div class="container-input">
-                <input class="form-control-plaintext" type="search" name="search" id="search" placeholder="Rechercher...">
-                <button class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+                <input [disabled]="addPatient || modify" class="form-control-plaintext" type="search" name="search" id="search" placeholder="Rechercher...">
+                <button [disabled]="addPatient || modify" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
-            <button class="btn fs-4" [disabled]="addPatient" (click)="onAddPatient()">
+            <button class="btn fs-4" [disabled]="addPatient || modify" (click)="onAddPatient()">
                 <i class="fa-solid fa-plus fs-5 position-relative plus"></i>
                 <i class="fa-solid fa-bed-pulse"></i>
             </button>
         </div>
     </div>
-    <div *ngIf="!addPatient" class="container px-4 border-bottom border-3 table-head table-responsive table mt-4">
+    <div *ngIf="!addPatient && !modify" class="container px-4 border-bottom border-3 table-head table-responsive table mt-4">
         <div class="justify-content-between d-flex fw-bold col-12 py-2">
             <div class="col-2">Numero</div>
             <div class="col-4 " style="cursor: pointer" (click)="filterFirstname()">Firstname</div>
@@ -23,15 +23,63 @@
             <div class="" style="width: 50px;cursor: pointer" (click)="filterSex()">Sex</div>
         </div>
     </div>
-    <div *ngIf="!addPatient">
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
-        <app-patient-item></app-patient-item>
+    <div *ngIf="!addPatient && !modify">
+        <app-patient-item *ngfor="let patient of patients" [patient]="patient"
+        ></app-patient-item>
+        <p class="p-4 text-center" *ngIf="patients.length">{{message}}</p>
     </div>
-    <div *ngIf="addPatient">
-        <app-patient-form (remove)="addPatient = $event"></app-patient-form>
+    <div *ngIf="addPatient || modify" class="container-header col-10 mt-2 row continer mx-auto">
+        <h3 class="text-center">Ajouter un patient</h3>
+        <form class="justify-content-center col-10 mx-auto row g-2" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+            <div class="col-5 form-floating">
+                <input type="text" id="prenom" class="form-control" placeholder="text" formControlName="firstname">
+                <label for="prenom">Prénom</label>
+            </div>
+            <div class="col-4 form-floating">
+                <input type="text" id="nom" class="form-control" placeholder="text" formControlName="lastname">
+                <label for="nom">Nom</label>
+            </div>
+            <div class="col-2 form-floating">
+                <div  class="form-control text-center">
+                    M<input type="radio" class="mx-2" name="sex" value="M" id="sexeM" formControlName="sex">
+                    F<input type="radio" class="mx-2" name="sex" value="F" id="sexeF" formControlName="sex">
+                </div>
+                <label>Sexe</label>
+            </div>
+            <div class="col-3 form-floating">
+                <input type="date" id="dateN" class="form-control" placeholder="text" formControlName="birthday">
+                <label for="dateN">Date de naissance</label>
+            </div>
+            <div class="col-4 form-floating">
+                <input type="text" id="telephone" class="form-control" placeholder="text" formControlName="phone">
+                <label for="telephone">Téléphone</label>
+            </div>
+            <div class="col-4 form-floating">
+                <input type="text" id="nationnalite" class="form-control" placeholder="text" formControlName="nationality">
+                <label for="nationnalite">Nationnalité</label>
+            </div>
+            <div class="col-3 form-floating">
+                <input type="text" id="adresse" class="form-control" placeholder="text" formControlName="address">
+                <label for="adresse">Adresse</label>
+            </div>
+            <div class="col-3 form-floating">
+                <input type="text" id="ville" class="form-control" placeholder="text" formControlName="city">
+                <label for="ville">Ville</label>
+            </div>
+            <div class="col-2 form-floating">
+                <input type="text" id="pays" class="form-control" placeholder="text" formControlName="country">
+                <label for="pays">Pays</label>
+            </div>
+            <div class="col-3 form-floating">
+                <input type="text" id="cni" class="form-control" placeholder="text" formControlName="cni">
+                <label for="cni">CNI</label>
+            </div>
+            <div class=" button-div col-11">
+                <div class="d-flex justify-content-between end-0">
+                    <button [disabled]="!patients.length" routerLink="/patients" class="btn">Annuler</button>
+                    <button class="btn">Enregistrer</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

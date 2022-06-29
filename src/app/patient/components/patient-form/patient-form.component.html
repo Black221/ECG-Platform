@@ -1,4 +1,4 @@
-<div class="card-body  row g-2" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+<form class="card-body  row g-2" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
     <div class="col-5 form-floating">
         <input type="text" id="prenom" class="form-control" placeholder="text" formControlName="firstname">
         <label for="prenom">Prénom</label>
@@ -42,4 +42,4 @@
         <input type="text" id="cni" class="form-control" placeholder="text" formControlName="cni">
         <label for="cni">CNI</label>
     </div>
-</div>
+</form>

@@ -4,8 +4,8 @@
 
 export const environment = {
     AUTH_API: "http://localhost:3000/api/",
-  production: false,
-    RES_API: "http://:localhost5400/"
+    production: false,
+    RES_API: "http://localhost5200/"
 };
 
 /*

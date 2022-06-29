@@ -14,6 +14,8 @@ import { ButtonComponent } from './components/ecg-form/button/button.component';
 import {PatientModule} from "../patient/patient.module";
 import {PdfViewerModule} from "ng2-pdf-viewer";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {PostEcgService} from "./services/ajout-ecg.service";
+import {EcgService} from "./services/ecg.service";
 
 
 
@@ -41,6 +43,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         PdfViewerModule,
         FormsModule,
         ReactiveFormsModule
+    ],
+    providers: [
+        PostEcgService,
+        EcgService
     ]
 })
 export class EcgModule { }

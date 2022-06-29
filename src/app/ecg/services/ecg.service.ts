@@ -20,11 +20,11 @@ export class EcgService {
         restore: ""
     }
 
-    get (count: string) {
+    get () {
         return new Promise(
             (resolve, reject) => {
                 const doctor = this.storageService.getUser().userId;
-                this.http.get(this.api.get+count).subscribe(
+                this.http.get(this.api.get+doctor).subscribe(
                     (res) => {
                         this.isLoaded = true;
                         console.log("this is next");

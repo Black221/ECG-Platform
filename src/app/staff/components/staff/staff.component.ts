@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
+    addStaff: any;
+    modify: any;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
+    onAddStaff() {
+
+    }
 }

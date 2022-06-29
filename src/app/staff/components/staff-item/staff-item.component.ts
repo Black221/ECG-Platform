@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./staff-item.component.css']
 })
 export class StaffItemComponent implements OnInit {
+    staff:any = {
+
+    };
 
   constructor() { }
 

@@ -19,9 +19,10 @@
                 <div class="img-bg"></div>
             </figure>
             <div class="position-absolute top-0 text-end p-5">
-                <a class="link-warning fs-3 text-decoration-none" routerLink="/pathologies/edit/{{index}}"><i class="fa-solid fa-pen-to-square"></i></a>
+<!--                <a class="link-warning fs-3 text-decoration-none" (click)="onSelect()"><i class="fa-solid fa-pen-to-square"></i></a>-->
             </div>
-            <button role="link" ><a class="text-decoration-none link-info fs-2" routerLink="/pathologies/view/{{pathology._id}}"><i class="fa-solid fa-eye"></i></a></button>
+            <a class="link-warning btn fs-3 text-decoration-none" (click)="onSelect()"><i class="fa-solid fa-pen-to-square"></i></a>
+<!--            <button role="link" ><a class="text-decoration-none link-info fs-2" routerLink="/pathologies/view/{{pathology._id}}"><i class="fa-solid fa-eye"></i></a></button>-->
             <div class="design-container">
                 <span class="design design--1"></span>
                 <span class="design design--2"></span>
@@ -31,9 +32,6 @@
                 <span class="design design--6"></span>
                 <span class="design design--7"></span>
                 <span class="design design--8"></span>
-            </div>
-            <div class="position-absolute bottom-0 text-end p-5">
-                <button class="text-danger fs-3 text-decoration-none" (click)="onDelete(pathology._id)"><i class="fa-solid fa-trash-can"></i></button>
             </div>
         </div>
     </div>

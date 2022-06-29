@@ -5,8 +5,8 @@
         </h3>
         <div class="d-flex align-items-center">
             <div class="container-input" >
-                <input [disabled]="add" class="form-control-plaintext" type="search" name="search" id="search" placeholder="Rechercher...">
-                <button [disabled]="add" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+                <input [disabled]="add || modify" class="form-control-plaintext" type="search" name="search" id="search" placeholder="Rechercher...">
+                <button [disabled]="add || modify" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
             <button class="btn fs-4" [disabled]="add" (click)="addPathology(true)">
                 <i class="fa-solid fa-plus fs-5 position-relative plus"></i>
@@ -16,9 +16,10 @@
     </div>
     <div class="container mt-4">
         <app-pathology-form *ngIf="add" (back)="addPathology(false)"></app-pathology-form>
-        <div class="container d-flex flex-wrap justify-content-center" *ngIf="!add">
-            <app-pathology-item *ngFor="let pathology of pathologies"
+        <div class="container d-flex flex-wrap justify-content-center" *ngIf="!add && !modify">
+            <app-pathology-item (modify)="getSelect($event)" *ngFor="let pathology of pathologies"
                                 [pathology]="pathology"></app-pathology-item>
         </div>
+        <app-pathology-form *ngIf="modify" [pathology]="selected" (back)="modify= false"></app-pathology-form>
     </div>
 </div>

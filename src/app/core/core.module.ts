@@ -13,6 +13,10 @@ import {StaffModule} from "../staff/staff.module";
 import {UserGard} from "./guards/user.gard";
 import {AdminGard} from "./guards/admin.gard";
 import {EcgModule} from "../ecg/ecg.module";
+import {PathologyService} from "../pathology/services/pathology.service";
+import {PathologyModule} from "../pathology/pathology.module";
+import {EcgService} from "../ecg/services/ecg.service";
+import {PostEcgService} from "../ecg/services/ajout-ecg.service";
 
 
 
@@ -37,7 +41,9 @@ import {EcgModule} from "../ecg/ecg.module";
     providers: [
         UserGard,
         AdminGard,
-        StaffService
+        StaffService,
+        EcgService,
+        PostEcgService
     ]
 })
 export class CoreModule { }

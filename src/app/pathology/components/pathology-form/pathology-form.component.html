@@ -1,17 +1,17 @@
-<div class="main-container d-flex justify-content-center">
+<form class="main-container d-flex justify-content-center" [formGroup]="pathologyForm" (submit)="onSubmit()">
     <div class="container-content col-6 p-4 mb-5">
         Ajouter une Pathologie
         <div class="form-floating m-2">
-            <input type="text" class="form-control" placeholder="">
+            <input type="text" class="form-control" placeholder="" formControlName="name">
             <label class="form-label">Name</label>
         </div>
         <div class="form-floating m-2">
-            <textarea type="text" class="form-control"style="height: 150px" placeholder=""></textarea>
+            <textarea type="text" class="form-control"style="height: 150px" placeholder="" formControlName="description"></textarea>
             <label class="form-label">Description</label>
         </div>
         <div class="text-end">
-            <button class="btn mx-1" (click)="onReturn($event)">Annuler</button>
-            <button class="btn" (click)="onSubmit()">Ajouter</button>
+            <a class="btn mx-1" (click)="onReturn()">Annuler</a>
+            <button class="btn" [disabled]="pathologyForm.invalid" type="submit">Ajouter</button>
         </div>
     </div>
-</div>
+</form>

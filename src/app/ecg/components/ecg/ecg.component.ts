@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {EcgService} from "../../services/ecg.service";
 
 @Component({
   selector: 'app-ecg',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EcgComponent implements OnInit {
 
-  constructor() { }
+    ecgs = [];
 
-  ngOnInit(): void {
-  }
+    constructor (
+        private router: Router,
+        private ecgService: EcgService
+    ) { }
 
+    ngOnInit(): void {
+        if (!this.ecgs.length)
+            this.router.navigateByUrl('/ecgs/new')
+    }
+
+    getEcgs () {
+        this.ecgService.get().then(
+            res => {
+                if (res)
+                    //@ts-ignore
+                    this.ecgs = res.ecgs;
+            }
+        )
+    }
 }

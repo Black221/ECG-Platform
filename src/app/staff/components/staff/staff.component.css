@@ -1,0 +1,50 @@
+* {
+    color: #001970;
+}
+
+h3 {
+    position: relative;
+}
+h3 a {
+    position: absolute;
+    right: 0;
+}
+
+.container-input {
+    position: relative;
+    display: flex;
+    border-radius: 50px;
+    border: none;
+    width: 300px;
+    height: 40px;
+    background: #59D22E;
+}
+
+.container-input button {
+    position: absolute;
+    font-size: 24px;
+    transform: translateY(-8px) rotate(42deg);
+    right: 0px;
+    background: none;
+}
+
+.container-input input {
+    border-radius: 20px;
+    padding-inline: 15px;
+}
+
+.plus {
+    bottom: 18px;
+}
+
+.container-header {
+    border-radius: 10px;
+    background: whitesmoke;
+    box-shadow: 1px 1px 10px gray;
+    padding: 30px;
+}
+
+.main-container {
+    height: calc(100vh - 66px);
+    overflow-y: scroll;
+}

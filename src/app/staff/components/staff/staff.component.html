@@ -1,1 +1,22 @@
-<p>staff works!</p>
+<div class="main-container overflow-scroll">
+    <div class="container-header container mt-4  d-flex justify-content-between align-items-center flex-wrap">
+        <h3>
+            <span>Personnel</span>
+        </h3>
+        <div class="d-flex align-items-center">
+            <div class="container-input">
+                <input [disabled]="addStaff || modify" class="form-control-plaintext" type="search" name="search" id="search" placeholder="Rechercher...">
+                <button [disabled]="addStaff || modify" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+            <button class="btn fs-4" [disabled]="addStaff || modify" (click)="onAddStaff()">
+                <i class="fa-solid fa-plus fs-5 position-relative plus"></i>
+                <i class="fa-solid fa-bed-pulse"></i>
+            </button>
+        </div>
+    </div>
+    <div class="mt-4 container d-flex justify-content-center">
+        <app-staff-item></app-staff-item>
+        <app-staff-item></app-staff-item>
+        <app-staff-item></app-staff-item>
+    </div>
+</div>

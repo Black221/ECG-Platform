@@ -17,18 +17,19 @@ export class PatientService {
     ) { }
 
     private api = {
-        get: environment.RES_API+"",
+        getForDoctor: environment.RES_API+"patient/getByDoctor/",
+        get: environment.RES_API+"patient/",
         update: environment.RES_API+"",
         archive: environment.RES_API+"",
         restore: environment.RES_API+"",
         post: environment.RES_API+""
     }
 
-    post (ecg: string) {
+    post (patient: string) {
         return new Promise(
             (resolve, reject) => {
                 const doctor = this.storageService.getUser().userId;
-                this.http.post(this.api.post+doctor, ecg).subscribe(
+                this.http.post(this.api.post+doctor, patient).subscribe(
                     (res) => {
                         this.isLoaded = true;
                         console.log("this is next");
@@ -121,6 +122,30 @@ export class PatientService {
             (resolve, reject) => {
                 const creater = this.storageService.getUser().userId;
                 this.http.put(this.api.restore+id, {}).subscribe(
+                    (res) => {
+                        this.isLoaded = true;
+                        console.log("this is next");
+                        resolve(res);
+                    },
+                    (error) => {
+                        this.isLoaded = false;
+                        reject(error);
+                    },
+                    () => {
+                        console.log("this is complete");
+                        return "complete";
+                    }
+                )
+            }
+        )
+    }
+
+    getForDoctor() {
+        const id = this.storageService.getUser().userId;
+        return new Promise(
+            (resolve, reject) => {
+                const creater = this.storageService.getUser().userId;
+                this.http.get(this.api.getForDoctor+id).subscribe(
                     (res) => {
                         this.isLoaded = true;
                         console.log("this is next");

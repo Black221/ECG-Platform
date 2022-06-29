@@ -47,11 +47,11 @@ export class PathologyService {
         )
     }
 
-    post (ecg: string) {
+    post (pathology: any) {
         return new Promise(
             (resolve, reject) => {
                 const doctor = this.storageService.getUser().userId;
-                this.http.post(this.api.post+doctor, ecg).subscribe(
+                this.http.post(this.api.post+doctor, pathology).subscribe(
                     (res) => {
                         this.isLoaded = true;
                         console.log("this is next");

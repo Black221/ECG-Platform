@@ -6,6 +6,7 @@ import { PathologyFormComponent } from './components/pathology-form/pathology-fo
 import {PathologyRoutingModule} from "./pathology.routing.module";
 import {ShareModule} from "../share/share.module";
 import {PathologyService} from "./services/pathology.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -18,7 +19,9 @@ import {PathologyService} from "./services/pathology.service";
     imports: [
         CommonModule,
         PathologyRoutingModule,
-        ShareModule
+        ShareModule,
+        ReactiveFormsModule,
+        FormsModule
     ],
     exports: [
         PathologyItemComponent,
